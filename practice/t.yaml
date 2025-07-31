@@ -1,0 +1,64 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: "2025-07-31T21:29:51Z"
+  generation: 1
+  labels:
+    run: web-container
+  name: web-container
+  namespace: default
+  resourceVersion: "13339"
+  uid: 9a3fd7af-0c3c-4e92-8d61-b4ff48ebcd5a
+spec:
+  containers:
+  - image: ngninx
+    imagePullPolicy: Always
+    name: web-container
+    resources: {}
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-k9622
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  preemptionPolicy: PreemptLowerPriority
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: default
+  serviceAccountName: default
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - name: kube-api-access-k9622
+    projected:
+      defaultMode: 420
+      sources:
+      - serviceAccountToken:
+          expirationSeconds: 3607
+          path: token
+      - configMap:
+          items:
+          - key: ca.crt
+            path: ca.crt
+          name: kube-root-ca.crt
+      - downwardAPI:
+          items:
+          - fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+            path: namespace
+status:
+  phase: Pending
+  qosClass: BestEffort
