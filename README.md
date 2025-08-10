@@ -87,5 +87,5 @@ kubectl run nginxweb2 --image=nginx -ns test --dry-run=client -o yaml >output4.y
   kubectl run -i -t busybox --image=busybox --restart=Never
 
 
-
-
+# exec into a file
+k -n mct exec -it nginx-mct -- sh
