@@ -1,0 +1,33 @@
+apiVersion: v1
+
+
+kind: PersistentVolumeClaim
+
+
+metadata:
+
+ namespace: msp
+
+ name: msp-pvc
+
+
+spec:
+ volumeName: msp-pv
+
+ 
+
+
+ accessModes:
+
+
+   - ReadWriteOnce
+
+
+ resources:
+
+
+   requests:
+
+
+     storage: 100Mi
+

@@ -4,4 +4,5 @@
 (k set image pod nginimage nginimage=nginx:1.7.1)
 3.get nginx pod Ip created in question 2 above
 (k run nginx4 --image=nginx --env="myval1=myval1")
+(k exec -it nginx4 -- sh)
 4. Create an nginx pod and set an env value of ‘myval1=myval1’, check the env val

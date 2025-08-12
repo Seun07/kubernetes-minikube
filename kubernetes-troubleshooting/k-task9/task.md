@@ -1,0 +1,1 @@
+k run nginx2-container --image=nginx --port=80 -n custom -o yaml > nginx-pod.yaml
