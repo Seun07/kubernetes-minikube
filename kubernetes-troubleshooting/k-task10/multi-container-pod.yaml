@@ -11,4 +11,4 @@ spec:
   - name: busybox-container
     image: busybox:latest
     command: ["/bin/sh"]
-    args: ["-c", "while true; do sleep 3600; done"]
+    args: ["-c", "while true; do sleep 4800; done"]
