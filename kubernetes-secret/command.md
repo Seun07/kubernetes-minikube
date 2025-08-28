@@ -12,3 +12,5 @@ k get secret or k get secret -o yaml
 $ echo 'YWRtaW4=' | base64 --decode
 
 $ echo 'cGFzc3dvcmQ=' | base64 --decode
+# 
+env | grep myusername
